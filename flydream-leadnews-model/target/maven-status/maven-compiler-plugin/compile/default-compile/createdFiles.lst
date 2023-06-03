@@ -1,0 +1,3 @@
+com\flydream\model\article\ApArticle.class
+com\flydream\model\annotation\DateConvert.class
+com\flydream\model\annotation\IdEncrypt.class
