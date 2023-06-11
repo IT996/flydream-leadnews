@@ -2,13 +2,13 @@
   "groups": [
     {
       "name": "mysql.core",
-      "type": "com.flydream.common.mysql.core.TransactionConfig",
-      "sourceType": "com.flydream.common.mysql.core.TransactionConfig"
+      "type": "com.flydream.common.mysql.core.MysqlCoreConfig",
+      "sourceType": "com.flydream.common.mysql.core.MysqlCoreConfig"
     },
     {
       "name": "mysql.core",
-      "type": "com.flydream.common.mysql.core.MysqlCoreConfig",
-      "sourceType": "com.flydream.common.mysql.core.MysqlCoreConfig"
+      "type": "com.flydream.common.mysql.core.TransactionConfig",
+      "sourceType": "com.flydream.common.mysql.core.TransactionConfig"
     }
   ],
   "properties": [

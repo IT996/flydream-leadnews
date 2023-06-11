@@ -2,9 +2,12 @@
 <project version="4">
   <component name="Encoding" defaultCharsetForPropertiesFiles="UTF-8">
     <file url="file://$PROJECT_DIR$/flydream-leadnews-apis/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/flydream-leadnews-apis/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/flydream-leadnews-article/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/flydream-leadnews-common/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/flydream-leadnews-common/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/flydream-leadnews-model/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/flydream-leadnews-model/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/flydream-leadnews-utils/src/main/java" charset="UTF-8" />
     <file url="PROJECT" charset="UTF-8" />
   </component>

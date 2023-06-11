@@ -2,12 +2,21 @@ package com.flydream.article.service.impl;
 
 import com.flydream.article.service.AppArticleService;
 import com.flydream.common.article.constans.ArticleConstans;
+import com.flydream.model.admin.pojos.AdUser;
 import com.flydream.model.article.dtos.ArticleHomeDto;
+import com.flydream.model.article.pojos.ApArticle;
 import com.flydream.model.common.dtos.ResponseResult;
+import com.flydream.model.mappers.app.ApArticleMapper;
+import com.flydream.model.mappers.app.ApUserArticleListMapper;
+import com.flydream.model.user.pojos.ApUser;
+import com.flydream.model.user.pojos.ApUserArticleList;
+import com.flydream.utils.threadlocal.AppThreadLocalUtils;
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  * 功能描述
@@ -63,8 +72,49 @@ public class AppArticleServiceImpl implements AppArticleService {
         }
 
         //判断用户是否登录
-        //AppThreadLocalUtils.getUser()
+        ApUser apuser = AppThreadLocalUtils.getUser();
 
-        return null;
+        //判断用户是否存在
+        if(apuser !=null){
+            //已登录 加载推荐文章
+            List<ApArticle> apArticleList = getUserArticle(apuser,dto,type);
+            return ResponseResult.okResult(apArticleList);
+        }else{
+            //未登录，加载默认文章
+            List<ApArticle> apArticles = getDefaultArticle(dto,type);
+            return ResponseResult.okResult(apArticles);
+        }
+    }
+
+    @Autowired
+    private ApArticleMapper apArticleMapper;
+
+    /**
+     * 加载默认的文章信息
+     * @param dto
+     * @param type
+     * @return
+     */
+    private List<ApArticle> getDefaultArticle(ArticleHomeDto dto,short type){
+        return apArticleMapper.loadArticleListByLocation(dto,type);
+    }
+
+
+    @Autowired
+    private ApUserArticleListMapper apUserArticleListMapper;
+    /**
+     * 先从用户的推荐表中查找文章信息，如果没有再从默认文章信息获取数据
+     * @param user
+     * @param dto
+     * @param type
+     * @return
+     */
+    private List<ApArticle> getUserArticle(ApUser user, ArticleHomeDto dto, Short type){
+        List<ApUserArticleList>list=apUserArticleListMapper.loadArticleIdListByUser(user,dto,type);
+        if(list.isEmpty()){
+            return  apArticleMapper.loadArticleListByIdList(list);
+        }else{
+            return getDefaultArticle(dto,type);
+        }
     }
 }

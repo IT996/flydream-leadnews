@@ -1,17 +1,17 @@
 package com.flydream.utils.threadlocal;
 
 
-import com.flydream.model.admin.pojos.AdUser;
+import com.flydream.model.user.pojos.ApUser;
 
-public class AdminThreadLocalUtils {
+public class AppThreadLocalUtils {
 
-    private final  static ThreadLocal<AdUser> userThreadLocal = new ThreadLocal<>();
+    private final  static ThreadLocal<ApUser> userThreadLocal = new ThreadLocal<>();
 
     /**
      * 设置当前线程中的用户
      * @param user
      */
-    public static void setUser(AdUser user){
+    public static void setUser(ApUser user){
         userThreadLocal.set(user);
     }
 
@@ -19,7 +19,7 @@ public class AdminThreadLocalUtils {
      * 获取线程中的用户
      * @return
      */
-    public static AdUser getUser( ){
+    public static ApUser getUser( ){
         return userThreadLocal.get();
     }
 
