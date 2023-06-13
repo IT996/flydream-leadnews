@@ -21,10 +21,6 @@
             <groupId>com.flydream</groupId>
             <artifactId>flydream-leadnews-model</artifactId>
         </dependency>
-        <dependency>
-            <groupId>com.flydream</groupId>
-            <artifactId>flydream-leadnews-model</artifactId>
-        </dependency>
     </dependencies>
 
 </project>

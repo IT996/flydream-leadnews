@@ -9,14 +9,14 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>flydream-leadnews-article</artifactId>
+    <artifactId>flydream-leadnews-behavior</artifactId>
 
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>
     </properties>
+
     <dependencies>
-        <!-- 引入依赖模块 -->
         <dependency>
             <groupId>com.flydream</groupId>
             <artifactId>flydream-leadnews-model</artifactId>

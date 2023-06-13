@@ -14,6 +14,7 @@
         <module>flydream-leadnews-article</module>
         <module>flydream-leadnews-apis</module>
         <module>flydream-leadnews-utils</module>
+        <module>flydream-leadnews-behavior</module>
     </modules>
     <!-- 继承Spring boot工程 -->
     <parent>
@@ -61,11 +62,7 @@
         <reflections.version>0.9.11</reflections.version>
     </properties>
     <dependencies>
-        <!--日志处理包-->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-log4j2</artifactId>
-        </dependency>
+
         <!-- lombok -->
         <dependency>
             <groupId>org.projectlombok</groupId>
@@ -314,24 +311,13 @@
                 <artifactId>kafka-clients</artifactId>
                 <version>${kafka.client.version}</version>
             </dependency>
-            <!--swagger-->
-            <dependency>
-                <groupId>io.springfox</groupId>
-                <artifactId>springfox-swagger2</artifactId>
-                <version>2.9.2</version>
-            </dependency>
-            <!-- https://mvnrepository.com/artifact/io.springfox/springfox-swagger-ui -->
-            <dependency>
-                <groupId>io.springfox</groupId>
-                <artifactId>springfox-swagger-ui</artifactId>
-                <version>2.9.2</version>
-            </dependency>
 
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-starter-web</artifactId>
                 <scope>provided </scope>
             </dependency>
+
        </dependencies>
     </dependencyManagement>
 

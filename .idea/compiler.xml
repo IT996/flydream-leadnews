@@ -11,14 +11,20 @@
         <module name="flydream-leadnews-apis" />
         <module name="flydream-leadnews-utils" />
         <module name="flydream-leadnews-common" />
+        <module name="flydream-leadnews-behavior" />
         <module name="flydream-leadnews-model" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="heima-leadnews-behavior" target="8" />
+    </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="flydream-leadnews" options="" />
       <module name="flydream-leadnews-apis" options="-parameters" />
       <module name="flydream-leadnews-article" options="-parameters" />
+      <module name="flydream-leadnews-behavior" options="-parameters" />
       <module name="flydream-leadnews-common" options="-parameters" />
       <module name="flydream-leadnews-model" options="-parameters" />
       <module name="flydream-leadnews-utils" options="-parameters" />

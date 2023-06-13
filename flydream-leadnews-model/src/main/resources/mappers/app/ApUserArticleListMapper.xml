@@ -30,7 +30,7 @@
                 and channel_id = #{dto.tag}
             </if>
         </where>
-        limit#{dto.size}
+        limit #{dto.size}
     </select>
 
 </mapper>
