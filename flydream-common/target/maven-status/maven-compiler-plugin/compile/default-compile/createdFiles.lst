@@ -1,0 +1,3 @@
+com\flydream\common\mysql\core\MysqlCoreConfig.class
+META-INF\spring-configuration-metadata.json
+com\flydream\common\mysql\core\TransactionConfig.class

@@ -1,0 +1,468 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>cn.flydream</groupId>
+    <artifactId>flydream-leadnews</artifactId>
+    <packaging>pom</packaging>
+    <version>1.0-SNAPSHOT</version>
+    <modules>
+        <module>flydream-common</module>
+        <module>flydream-model</module>
+        <module>flydream-article</module>
+        <module>flydream-api</module>
+        <module>flydream-utils</module>
+        <module>flydream-behavior</module>
+    </modules>
+
+    <!-- 继承Spring boot工程 -->
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.1.5.RELEASE</version>
+    </parent>
+    <properties>
+        <maven.compiler.source>8</maven.compiler.source>
+        <maven.compiler.target>8</maven.compiler.target>
+
+
+        <lombok.version>1.18.8</lombok.version>
+        <!--这是一个Spring Boot项目的配置文件，其中指定了项目使用的Spring Boot版本为2.1.5.RELEASE。-->
+        <spring.boot.version>2.1.5.RELEASE</spring.boot.version>
+        <!--Apache Commons IO是一个提供各种实用IO操作的Java库，包括文件读写、文件过滤、字符处理等等。在项目中引入该库可以方便地实现一些常见的IO操作，而无需从头开始编写代码。-->
+        <commons.io.version>2.6</commons.io.version>
+        <!--
+       <commons.codec.version>1.12</commons.codec.version> 是一个Maven依赖配置，用于指定项目使用的Apache Commons Codec库的版本号。
+            Apache Commons Codec是一个提供编解码功能的Java库，包括Base64、Hex、MD5、SHA等各种编码和解码算法。在项目中引入该库可以方便地实现各种常见的编解码操作，而无需从头开始编写代码。
+            通过将 <commons.codec.version>1.12</commons.codec.version> 添加到项目的pom.xml文件中，Maven会自动下载并引入所需的Apache Commons Codec库及其相关依赖项，以便在项目中使用。
+        -->
+        <commons.codec.version>1.12</commons.codec.version>
+        <!--
+        <mysql.version>5.1.47</mysql.version> 是一个Maven依赖配置，用于指定项目使用的MySQL Connector/J（JDBC驱动程序）的版本号。
+            MySQL Connector/J是MySQL官方提供的Java数据库连接库，它允许Java应用程序通过JDBC API连接到MySQL数据库。在项目中引入该库可以方便地实现与MySQL数据库的交互操作，而无需从头开始编写代码。
+            通过将 <mysql.version>5.1.47</mysql.version> 添加到项目的pom.xml文件中，Maven会自动下载并引入所需的MySQL Connector/J库及其相关依赖项，以便在项目中使用。
+        -->
+        <mysql.version>5.1.47</mysql.version>
+
+        <!--MyBatis是一个优秀的Java持久层框架，它支持定制化SQL、存储过程以及高级映射。MyBatis避免了几乎所有的JDBC代码和手动设置参数以及获取结果集的过程。
+        通过将SQL语句与Java代码解耦，MyBatis使得开发人员能够更专注于Java应用程序的业务逻辑实现。-->
+        <mybatis.version>3.5.1</mybatis.version>
+
+
+        <!--MyBatis-Spring是MyBatis与Spring框架的集成解决方案，它提供了一些方便的特性，例如通过注解或XML配置文件来将SqlSessionFactory和Mapper接口注册到Spring容器中，
+        从而实现了更加灵活的配置和使用方式。在项目中引入MyBatis-Spring集成框架可以方便地实现MyBatis与Spring框架的无缝集成，从而使得开发人员能够更加便捷地使用MyBatis框架进行数据库操作。
+        通过将 <mybatis.spring.version>2.0.1</mybatis.spring.version> 添加到项目的pom.xml文件中，Maven会自动下载并引入所需的MyBatis-Spring集成框架及其相关依赖项，
+        以便在项目中使用。-->
+        <mybatis.spring.version>2.0.1</mybatis.spring.version>
+
+        <!--
+            Apache Commons Lang是一个提供各种常用工具类的Java库，包括字符串处理、数值计算、时间日期处理等等。在项目中引入该库可以方便地实现一些常见的功能，而无需从头开始编写代码。
+            通过将 <lang3.version>3.5</lang3.version> 添加到项目的pom.xml文件中，Maven会自动下载并引入所需的Apache Commons Lang库及其相关依赖项，以便在项目中使用。
+        -->
+        <lang3.version>3.5</lang3.version>
+        <!--
+            PageHelper是一个MyBatis的分页插件，它提供了一些方便的功能，例如自动分页、排序等。在项目中引入该库可以方便地实现对数据库的分页查询操作，而无需手动编写复杂的SQL语句。
+            通过将 <pagehelper.version>1.2.3</pagehelper.version> 添加到项目的pom.xml文件中，Maven会自动下载并引入所需的PageHelper库及其相关依赖项，以便在项目中使用。
+        -->
+        <pagehelper.version>1.2.3</pagehelper.version>
+
+        <!--Jsoup是一个Java库，用于解析HTML文档。它提供了一种方便的方式来提取和操作数据。在这个query中，提到了Jsoup的版本号为1.10.2。-->
+        <jsoup.version>1.10.2</jsoup.version>
+
+
+        <!--JWT（JSON Web Token）是一种用于在网络应用程序之间传递信息的紧凑、URL安全的表示形式-->
+        <jwt.version>0.9.1</jwt.version>
+
+
+        <!--Fastjson是一个Java库，用于将Java对象转换为JSON字符串，以及将JSON字符串转换为Java对象。它提供了一种简单、高效的方式来处理JSON数据。-->
+        <fastjson.version>1.2.58</fastjson.version>
+
+        <fastjson.dataformat.version>2.9.9</fastjson.dataformat.version>
+
+        <spring.jwt.version>1.0.9.RELEASE</spring.jwt.version>
+
+        <!--Spring Boot Admin是一个用于监控和管理Spring Boot应用程序的工具-->
+        <spring.boot.admin.version>2.1.6</spring.boot.admin.version>
+
+        <!--Spring Cloud是一个用于构建分布式系统的框架，它提供了一系列的工具和组件，帮助开发人员快速构建、部署和管理微服务-->
+        <spring.cloud.version>Greenwich.RELEASE</spring.cloud.version>
+
+        <!--Curator是一个用于管理Zookeeper集群的Java客户端库-->
+        <curator.version>4.2.0</curator.version>
+        <!--HanLP是一个Java自然语言处理库，提供了一系列的文本处理功能，如分词、词性标注、命名实体识别等-->
+        <hanlp.version>portable-1.3.4</hanlp.version>
+
+        <!--FastDFS是一个分布式文件系统，用于存储和管理大量的非结构化数据。-->
+        <fastdfs.version>0.2.0</fastdfs.version>
+
+        <!--百度是一个中国的科技公司，提供了一系列互联网服务和产品。-->
+        <baidu.version>4.11.1</baidu.version>
+        <!--阿里云是一个中国的云服务提供商，提供了一系列云计算、大数据、人工智能等服务。-->
+        <ali.core.version>4.1.1</ali.core.version>
+        <!--阿里云绿网（GreenWave）是一个用于保护网站安全的防护系统，可以防止DDoS攻击、Web攻击等。-->
+        <ali.green.version>3.4.1</ali.green.version>
+        <!--JUnit是一个Java测试框架，用于编写和运行可重复的测试。-->
+        <junit.version>4.12</junit.version>
+        <!--SearchBox是一个用于搜索的组件，可以提供自动完成、模糊匹配等功能。-->
+        <searchbox.version>6.3.1</searchbox.version>
+        <!--Elasticsearch是一个分布式搜索和分析引擎，用于处理大量数据并提供实时搜索功能-->
+        <elasticsearch.version>7.2.0</elasticsearch.version>
+
+        <kafka.version>2.2.7.RELEASE</kafka.version>
+        <kafka.client.version>2.0.1</kafka.client.version>
+        <reflections.version>0.9.11</reflections.version>
+
+    </properties>
+
+    <dependencies>
+        <!--日志处理包-->
+        <!--
+            Log4j2是一个优秀的Java日志框架，它提供了灵活的日志级别、多种输出方式（如控制台、文件、数据库等）、异步日志等功能。
+            在Spring Boot项目中使用Log4j2可以方便地实现对应用程序的日志记录和管理。
+            通过将 spring-boot-starter-log4j2 添加到项目的pom.xml文件中，Maven会自动下载并引入所需的Log4j2库及其相关依赖项，并在应用程序启动时自动配置Log4j2。
+            开发人员可以在代码中使用Log4j2提供的API来记录日志信息，从而实现对应用程序的调试和监控。
+        -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-log4j2</artifactId>
+        </dependency>
+        <!-- lombok -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>${lombok.version}</version>
+            <scope>provided</scope>
+        </dependency>
+    </dependencies>
+    <dependencyManagement>
+        <dependencies>
+            <!-- Spring boot 特殊处理包 -->
+            <!--JWT是一种基于JSON的轻量级身份验证和授权方案，它被广泛用于Web应用程序的身份验证和授权。在Spring Security项目中使用JWT可以方便地实现对用户身份的认证和授权管理。
+                通过将 spring-security-jwt 添加到项目的pom.xml文件中，Maven会自动下载并引入所需的Spring Security JWT库及其相关依赖项，并在应用程序中自动配置JWT相关的过滤器、
+                拦截器等组件。开发人员可以在代码中使用Spring Security提供的API来生成、解析和验证JWT令牌，从而实现对用户身份的认证和授权管理。-->
+            <dependency>
+                <groupId>org.springframework.security</groupId>
+                <artifactId>spring-security-jwt</artifactId>
+                <version>${spring.jwt.version}</version>
+            </dependency>
+            <!--
+                org.reflections 是一个Java库，用于在运行时查找类路径中的类、接口、枚举和注解。它提供了一种简单的方式来获取类路径中的所有类，
+                以及这些类的子类、实现的接口等。这个库可以用于构建自动化测试、代码生成、依赖注入等功能。
+            -->
+            <dependency>
+                <groupId>org.reflections</groupId>
+                <artifactId>reflections</artifactId>
+                <version>${reflections.version}</version>
+            </dependency>
+            <!--spring-boot-starter-web 是一个Spring Boot的启动器，用于简化Web应用程序的开发。它包含了Spring MVC框架的核心组件，如控制器、视图解析器、拦截器等。
+            通过添加这个启动器，开发人员可以快速地构建一个基于Spring Boot的Web应用程序。-->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-web</artifactId>
+                <!-- 排除默认的logback日志，使用log4j-->
+                <exclusions>
+                    <exclusion>
+                        <groupId>org.springframework.boot</groupId>
+                        <artifactId>spring-boot-starter-logging</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>org.slf4j</groupId>
+                        <artifactId>slf4j-log4j12</artifactId>
+                    </exclusion>
+                </exclusions>
+                <version>${spring.boot.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter</artifactId>
+                <exclusions>
+                    <exclusion>
+                        <groupId>org.springframework.boot</groupId>
+                        <artifactId>spring-boot-starter-logging</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>org.slf4j</groupId>
+                        <artifactId>slf4j-log4j12</artifactId>
+                    </exclusion>
+                </exclusions>
+                <version>${spring.boot.version}</version>
+            </dependency>
+
+            <!--Apache 工具包包-->
+            <dependency>
+                <groupId>commons-io</groupId>
+                <artifactId>commons-io</artifactId>
+                <version>${commons.io.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-lang3</artifactId>
+                <version>${lang3.version}</version>
+            </dependency>
+            <!--加密处理包-->
+            <dependency>
+                <groupId>commons-codec</groupId>
+                <artifactId>commons-codec</artifactId>
+                <version>${commons.codec.version}</version>
+            </dependency>
+            <!-- Mysql 数据库 -->
+            <dependency>
+                <groupId>mysql</groupId>
+                <artifactId>mysql-connector-java</artifactId>
+                <version>${mysql.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.mybatis</groupId>
+                <artifactId>mybatis</artifactId>
+                <version>${mybatis.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.mybatis</groupId>
+                <artifactId>mybatis-spring</artifactId>
+                <version>${mybatis.spring.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.github.pagehelper</groupId>
+                <artifactId>pagehelper-spring-boot-starter</artifactId>
+                <version>${pagehelper.version}</version>
+            </dependency>
+
+            <!-- jsoup -->
+            <dependency>
+                <groupId>org.jsoup</groupId>
+                <artifactId>jsoup</artifactId>
+                <version>${jsoup.version}</version>
+            </dependency>
+
+            <!-- jwt -->
+            <dependency>
+                <groupId>io.jsonwebtoken</groupId>
+                <artifactId>jjwt</artifactId>
+                <version>${jwt.version}</version>
+            </dependency>
+
+            <!-- fastjson -->
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>fastjson</artifactId>
+                <version>${fastjson.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.fasterxml.jackson.dataformat</groupId>
+                <artifactId>jackson-dataformat-cbor</artifactId>
+                <version>${fastjson.dataformat.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.fasterxml.jackson.dataformat</groupId>
+                <artifactId>jackson-dataformat-xml</artifactId>
+                <version>${fastjson.dataformat.version}</version>
+            </dependency>
+
+
+            <!-- spring boot admin -->
+            <dependency>
+                <groupId>de.codecentric</groupId>
+                <artifactId>spring-boot-admin-dependencies</artifactId>
+                <version>${spring.boot.admin.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+
+            <!-- spring colud -->
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>${spring.cloud.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+
+            <!-- curator ZK 客户端 -->
+            <dependency>
+                <groupId>org.apache.curator</groupId>
+                <artifactId>curator-framework</artifactId>
+                <version>${curator.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.curator</groupId>
+                <artifactId>curator-recipes</artifactId>
+                <version>${curator.version}</version>
+            </dependency>
+
+
+            <!--匹配度工具包-->
+            <dependency>
+                <groupId>com.hankcs</groupId>
+                <artifactId>hanlp</artifactId>
+                <version>${hanlp.version}</version>
+            </dependency>
+
+            <!-- fastdfs客服端 -->
+            <dependency>
+                <groupId>com.luhuiguo</groupId>
+                <artifactId>fastdfs-spring-boot-starter</artifactId>
+                <version>${fastdfs.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <artifactId>logback-classic</artifactId>
+                        <groupId>ch.qos.logback</groupId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+
+
+            <!-- &lt;!&ndash; 阿里SDK  &ndash;&gt;
+            <dependency>
+                <groupId>com.baidu</groupId>
+                <artifactId>aip-java-sdk</artifactId>
+                <version>${baidu.version}</version>
+                <scope>system</scope>
+                <systemPath>${project.basedir}/../sdk-jar/baidu/aip-java-sdk-4.11.1.jar</systemPath>
+            </dependency>-->
+
+            <dependency>
+                <groupId>com.aliyun</groupId>
+                <artifactId>aliyun-java-sdk-core</artifactId>
+                <version>${ali.core.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.aliyun</groupId>
+                <artifactId>aliyun-java-sdk-green</artifactId>
+                <version>${ali.green.version}</version>
+            </dependency>
+            <!-- junit -->
+            <dependency>
+                <groupId>junit</groupId>
+                <artifactId>junit</artifactId>
+                <version>${junit.version}</version>
+            </dependency>
+
+            <!-- ElasticSearch连接-->
+            <dependency>
+                <groupId>io.searchbox</groupId>
+                <artifactId>jest</artifactId>
+                <version>${searchbox.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.elasticsearch</groupId>
+                <artifactId>elasticsearch</artifactId>
+                <version>${elasticsearch.version}</version>
+            </dependency>
+
+
+            <!-- kafkfa -->
+            <dependency>
+                <groupId>org.springframework.kafka</groupId>
+                <artifactId>spring-kafka</artifactId>
+                <version>${kafka.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.kafka</groupId>
+                <artifactId>kafka-streams</artifactId>
+                <version>${kafka.client.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <artifactId>connect-json</artifactId>
+                        <groupId>org.apache.kafka</groupId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.kafka</groupId>
+                <artifactId>spring-kafka-test</artifactId>
+                <version>${kafka.version}</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.kafka</groupId>
+                <artifactId>kafka-clients</artifactId>
+                <version>${kafka.client.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-maven-plugin</artifactId>
+                    <executions>
+                        <execution>
+                            <goals>
+                                <goal>repackage</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+        <plugins>
+            <plugin>
+                <artifactId>maven-resources-plugin</artifactId>
+                <configuration>
+                    <useDefaultDelimiters>true</useDefaultDelimiters>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.7.0</version>
+                <configuration>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                </configuration>
+            </plugin>
+        </plugins>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <includes>
+                    <include>**/*.*</include>
+                </includes>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
+        <testResources>
+            <testResource>
+                <directory>src/test/resources</directory>
+                <filtering>true</filtering>
+            </testResource>
+        </testResources>
+    </build>
+
+    <profiles>
+        <profile>
+            <id>dev</id>
+            <build>
+                <filters>
+                    <filter>maven_dev.properties</filter>
+                </filters>
+            </build>
+        </profile>
+        <profile>
+            <id>test</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <build>
+                <filters>
+                    <filter>maven_test.properties</filter>
+                </filters>
+            </build>
+        </profile>
+        <profile>
+            <id>prod</id>
+            <build>
+                <filters>
+                    <filter>maven_prod.properties</filter>
+                </filters>
+            </build>
+        </profile>
+    </profiles>
+</project>

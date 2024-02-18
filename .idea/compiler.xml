@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="flydream-model" />
+        <module name="flydream-api" />
+        <module name="flydream-article" />
+        <module name="flydream-utils" />
+        <module name="flydream-behavior" />
+        <module name="flydream-common" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="flydream-leadnews-article" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="flydream-api" options="-parameters" />
+      <module name="flydream-article" options="-parameters" />
+      <module name="flydream-behavior" options="-parameters" />
+      <module name="flydream-common" options="-parameters" />
+      <module name="flydream-leadnews" options="" />
+      <module name="flydream-leadnews-article" options="-parameters" />
+      <module name="flydream-model" options="-parameters" />
+      <module name="flydream-utils" options="-parameters" />
+    </option>
+  </component>
+</project>
