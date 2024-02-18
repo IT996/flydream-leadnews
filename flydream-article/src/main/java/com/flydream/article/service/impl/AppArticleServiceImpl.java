@@ -57,7 +57,7 @@ public class AppArticleServiceImpl implements AppArticleService {
 
         //分页参数校验
         Integer size = dto.getSize();
-        if (size==0 ||size<=0){
+        if (size==null ||size<=0){
             size=20;
         }
 
